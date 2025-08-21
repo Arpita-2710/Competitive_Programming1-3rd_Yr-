@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+
+string intToString(int num) {
+    stringstream ss;
+    ss << num;
+    return ss.str();
+}
+
+string compressString(string s) {
+    string result = "";
+    int n = s.size();
+
+    for (int i = 0; i < n; ) {
+        char current = s[i];
+        int count = 0;
+
+        // Count consecutive same characters
+        while (i < n && s[i] == current) {
+            count++;
+            i++;
+        }
+
+        // Append character + count
+        result += current;
+        result += intToString(count);
+    }
+
+    return result;
+}
+
+int main() {
+    string s;
+    cin >> s;
+
+    cout << compressString(s) << endl;
+
+    return 0;
+}
