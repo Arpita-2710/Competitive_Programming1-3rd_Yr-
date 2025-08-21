@@ -1,0 +1,27 @@
+//Reverse Words in a String
+//Given a string s, reverse the order of words (words are separated by spaces).
+//Example:
+//Input: "hello world from cpp"
+//Output: "cpp from world hello"
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string s = "hello world from cpp";
+    int n = s.size();
+    int end = n;
+
+    // Traverse from back
+    for (int i = n - 1; i >= 0; i--) {
+        if (s[i] == ' ') {
+            cout << s.substr(i + 1, end - i - 1) << " ";
+            end = i;
+        }
+    }
+    // Print the first word
+    cout << s.substr(0, end) << endl;
+
+    return 0;
+}
